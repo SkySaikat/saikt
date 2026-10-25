@@ -6,7 +6,9 @@ Prepared for the local portfolio on 26 October 2026 (Asia/Dhaka).
 
 Source: https://saikatchowdhury.com/, inspected in a live browser. Search-engine text was stale, so the live page was used.
 
-Reused assets: Saikat's portrait, eight website project images, and the two testimonial portraits. The two testimonials and attribution were copied from the live portfolio without inventing quotes or metrics. Existing live project, CV, email, and LinkedIn links were retained.
+Reused assets: Saikat's portrait, eight website project images, and the two testimonial portraits. The two testimonials and attribution were copied from the live portfolio without inventing quotes or metrics. Existing live project, email, and LinkedIn links were retained.
+
+The CV was replaced on October 26, 2026 with the user-supplied `Saikat chowdhury resume.pdf`. The original two-page PDF is copied unchanged to `public/downloads/saikat-chowdhury-cv.pdf` and linked from the contact section, replacing the broken WordPress upload URL.
 
 The old California Olive Ranch project link pointed to an unrelated relative path. No live-site link is included for that entry until a correct link is supplied.
 

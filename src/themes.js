@@ -8,16 +8,17 @@ export const themes = [
   {id:'pink',name:'Hot pink',color:'#ff80b5'},
   {id:'coral',name:'Coral',color:'#ff746c'}
 ];
+const defaultTheme=themes.find(theme=>theme.id==='amber');
 
 export function initThemes(onChange) {
   const trigger=document.querySelector('#theme-trigger');
   const panel=document.querySelector('#theme-panel');
   const choices=document.querySelector('#theme-options');
-  let selected=themes[0];
+  let selected=defaultTheme;
   choices.innerHTML=themes.map(theme=>`<button class="theme-swatch" type="button" data-theme="${theme.id}" style="--swatch:${theme.color}" aria-label="${theme.name}" aria-pressed="false"><span class="swatch-color"><span aria-hidden="true">✓</span></span><span>${theme.name}</span></button>`).join('');
 
   function apply(id,announce=false){
-    selected=themes.find(theme=>theme.id===id)||themes[0];
+    selected=themes.find(theme=>theme.id===id)||defaultTheme;
     document.documentElement.style.setProperty('--accent',selected.color);
     document.documentElement.dataset.theme=selected.id;
     document.querySelectorAll('[data-theme]').forEach(button=>{if(button.tagName==='BUTTON')button.setAttribute('aria-pressed',String(button.dataset.theme===selected.id))});
@@ -41,6 +42,6 @@ export function initThemes(onChange) {
   document.addEventListener('pointerdown',event=>{if(!panel.hidden&&!panel.contains(event.target)&&!trigger.contains(event.target))close()});
   document.addEventListener('focusin',event=>{if(!panel.hidden&&!panel.contains(event.target)&&!trigger.contains(event.target))close()});
   let saved;try{saved=localStorage.getItem('saikat-accent')}catch{}
-  apply(saved||'purple');
+  apply(saved||defaultTheme.id);
   return {get color(){return selected.color},close};
 }

@@ -32,6 +32,7 @@ The production build is written to `dist/`. Production preview uses http://127.0
 - `src/project-renderer.js`: shared project and expertise markup for static HTML and interactive rendering.
 - `scripts/generate-seo.js`: generates metadata, JSON-LD, static content, `public/sitemap.xml`, and `public/robots.txt`.
 - `public/assets/`: local images copied from the original portfolio and supplied Desktop projects.
+- `public/downloads/saikat-chowdhury-cv.pdf`: the supplied CV, served directly by the website. Replace this file to update the download; Vite includes it in `dist/downloads/` during builds.
 
 Add another object to `projects` in `src/data.js` to add a project. Project counts, categories, details, and command-palette entries derive from this data. Use category `web`, `ai`, or `plugins`. Add screenshot paths under `public/assets` and reference them as `/assets/name.webp`.
 
@@ -44,7 +45,7 @@ Add another object to `projects` in `src/data.js` to add a project. Project coun
 - The WebGL scene stops rendering outside the viewport and when the tab is hidden. If WebGL is unavailable, the portrait and CSS decoration remain.
 - The contact popup offers direct email plus an SMTP-backed form. A successful form submission is reported only after SMTP accepts the message for `hi@saikatchowdhury.com`.
 - Visitor email goes in Reply-To, while the authenticated mailbox is the sender. Form input is validated on the server. The endpoint includes same-origin checks, a honeypot, a body-size limit, and an in-memory per-address rate limit.
-- The chosen accent color is remembered locally and updates interface colors, diagrams, and Three.js materials.
+- Golden amber is the default accent for new visitors. A visitor’s chosen color is remembered locally and updates interface colors, diagrams, and Three.js materials.
 - The preloader lifts into a staggered entrance. Reduced-motion visitors see the content immediately.
 - Fonts and images are served locally. SMTP credentials stay on the server and are never included in the browser bundle.
 
@@ -83,7 +84,7 @@ The server uses Vite's multi-page mode only to return a real 404 for unknown pat
 
 ### When this version replaces the live website
 
-1. Keep `https://saikatchowdhury.com/` as the canonical HTTPS address and redirect alternate hostnames to it. Review old WordPress URLs before migration and preserve useful pages or redirect them to an appropriate equivalent; do not redirect every missing URL to the homepage. Preserve the existing CV download URL or update it to a migrated file.
+1. Keep `https://saikatchowdhury.com/` as the canonical HTTPS address and redirect alternate hostnames to it. Review old WordPress URLs before migration and preserve useful pages or redirect them to an appropriate equivalent; do not redirect every missing URL to the homepage. The CV now uses the bundled `/downloads/saikat-chowdhury-cv.pdf` file rather than the former WordPress upload URL.
 2. Confirm `https://saikatchowdhury.com/sitemap.xml` and `/robots.txt` return these new files. Localhost cannot be crawled by Google.
 3. In the verified Search Console property for this domain, submit `sitemap.xml`. No verification token is invented or embedded in this repository.
 4. Use Search Console URL Inspection to test the live homepage and request indexing. Check the published markup in Google's Rich Results Test. JSON-LD describes the page; it does not guarantee a rich result or a ranking position.

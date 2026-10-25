@@ -102,3 +102,11 @@ body[data-intro=entering] .hero-footer{animation:content-arrive .8s 1.1s both}
 @media(max-width:600px){.nav-actions{gap:12px}.theme-trigger{padding:9px 6px;border:0;gap:5px}.theme-trigger-label{display:none}.theme-chevron{display:none}.theme-trigger-dot{width:13px;height:13px}.theme-panel{right:-135px;top:calc(100% + 18px);width:min(304px,calc(100vw - 32px));padding:20px}.hero h1{font-size:clamp(46px,15.4vw,81px);line-height:1.1;letter-spacing:-.07em}.contact-dialog{padding:28px 23px;max-height:92svh}.contact-dialog-heading h2{font-size:28px}.contact-dialog-heading .eyebrow{font-size:7px}.contact-dialog-heading .muted{font-size:11px}.contact-glyph{right:0;font-size:32px;top:43px}.contact-direct{padding:15px;margin-top:22px}.contact-direct>span:last-child{font-size:clamp(15px,4.6vw,19px)}.contact-direct .mono{font-size:6px}.form-row{grid-template-columns:1fr;gap:18px}.contact-dialog input,.contact-dialog select,.contact-dialog textarea{font-size:16px}.contact-dialog label{font-size:11px}.contact-dialog textarea{min-height:130px}.contact-dialog .contact-submit{font-size:13px}.contact-availability{font-size:10px}}
 @media(prefers-reduced-motion:reduce){body[data-intro] .site-header,body[data-intro] .hero-copy>*,body[data-intro] .hero-visual,body[data-intro] .hero-footer,body[data-intro] .hero-title-line>span{opacity:1!important;transform:none!important;filter:none!important}.swatch-color{transition:none}}
 @media(max-width:600px){.theme-panel{position:fixed;left:16px;right:16px;top:86px;width:auto;max-width:350px;margin-inline:auto}.theme-trigger{min-width:30px}}
+
+/* Put the portrait first on phones while keeping the desktop composition. */
+@media(max-width:600px){
+  .hero{display:flex;flex-direction:column;padding-top:8px}
+  .hero-visual{order:1;width:100%;margin:0 auto 20px}
+  .hero-copy{order:2;width:100%}
+  .hero-footer{order:3;width:100%;margin-top:28px}
+}
