@@ -4,6 +4,7 @@ import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import './style.css';
 import './enhancements.css';
+import './readability.css';
 import {projects, expertise} from './data.js';
 import {initThemes} from './themes.js';
 import {initContact} from './contact.js';

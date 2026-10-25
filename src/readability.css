@@ -1,0 +1,140 @@
+/* Keep small type readable at every breakpoint without changing the headings. */
+:root{--body-copy:1rem;--small-copy:.875rem;--label-copy:.75rem;--muted:#aaaab6}
+body{font-size:var(--body-copy)}
+.hero-intro,.section-description,.about-heading>p,.glass p,.about-foundation p,
+.expertise-content p,.contact-bottom p,.project-detail-body>p,.project-detail-columns ul,
+.contact-dialog-heading .muted,.contact-success p{font-size:var(--body-copy);line-height:1.75;color:#aaaab6}
+.section-description{max-width:390px}
+.section-description br,.hero-intro .desktop-break{display:none}
+.project-subtitle{font-size:.9375rem;line-height:1.7;color:#aaaab6}
+.desktop-nav,.nav-contact,.button,.hero-actions .button,.text-link,.hero-actions .text-link,
+.more-work .button,.contact-actions .button,.contact-dialog .contact-submit,.contact-success .button{font-size:var(--small-copy)}
+.button,.nav-contact{min-height:44px}
+.desktop-nav{gap:24px}
+.hero-actions,.hero-signoff,.hero-footer,.work-toolbar,.project-tags,.contact-secondary,.site-footer{flex-wrap:wrap}
+.hero-actions .text-link{max-width:none}
+.hero-signoff{font-size:var(--label-copy);line-height:1.7;gap:8px 12px;color:#aaaab6;letter-spacing:.035em}
+.availability,.contact-section .availability,.eyebrow{font-size:var(--label-copy);line-height:1.6;letter-spacing:.07em}
+.eyebrow{flex-wrap:wrap;gap:8px}
+.hero-footer,.scroll-cue,.motion-toggle,.hero-summary>span,.client-band>p,
+.testimonial-source,.about-card-footer,.card-topline .mono,.about-foundation .mono,.about-location .mono,
+.about-location .location-time,.expertise-row .expertise-number,.project-detail-label{font-size:var(--label-copy);line-height:1.6}
+.hero-footer,.motion-toggle,.client-band>p,.testimonial-source,.expertise-row .expertise-number{color:#aaaab6}
+.hero-summary strong{font-size:20px}
+.motion-toggle{min-height:40px}
+.client-watkins small{font-size:10px;letter-spacing:.12em}
+.client-ezeie span,.client-crafted span{font-size:11px}
+.visual-coordinates,.portrait-edge,.interaction-hint{font-size:10px;line-height:1.6;color:#aaa6b4;letter-spacing:.04em}
+.portrait-caption>span:not(.portrait-mark){font-size:10px;line-height:1.5;letter-spacing:.05em}
+.floating-label,.label-top,.label-bottom{font-size:11px;line-height:1.5;letter-spacing:.035em}
+.floating-label small{font-size:10px;color:#b6b2bf;letter-spacing:.025em}
+.label-bottom{bottom:30px}
+.work-toolbar{gap:18px}
+.filter-list{gap:8px}
+.filter-list button{font-size:var(--small-copy);padding:10px 13px;min-height:44px}
+.filter-list button span{font-size:11px}
+#work-count,.work-toolbar #work-count,.card-index{font-size:var(--label-copy);color:#a4a4b1}
+.card-index{flex-shrink:0;white-space:nowrap}
+.project-heading{gap:12px;align-items:baseline}
+.project-type{font-size:11px;line-height:1.5;letter-spacing:.035em;max-width:calc(100% - 32px)}
+.project-tags{font-size:var(--label-copy);line-height:1.6;color:#a4a4b1;gap:6px 12px}
+.network-node{font-size:11px;line-height:1.3}
+.network-bottom,.concept-caption{font-size:10px;line-height:1.5;letter-spacing:.025em}
+.plugin-flow{font-size:var(--label-copy);gap:8px}
+.mini-pipeline{position:static;font-size:var(--label-copy);margin-top:24px;flex-wrap:wrap;gap:6px}
+.mini-pipeline span{padding:10px}
+.mini-pipeline i{width:12px}
+.about-ai p{max-width:none;margin-bottom:0}
+.about-foundation .code-line{font-size:var(--label-copy);white-space:normal;overflow-wrap:anywhere;line-height:1.7}
+.skill-chips span{font-size:var(--label-copy);line-height:1.5;padding:8px 10px}
+.quote-card figcaption{flex-wrap:wrap;gap:12px}
+.quote-card figcaption>div{flex:1 1 170px}
+.quote-card figcaption strong{font-size:var(--body-copy)}
+.quote-card figcaption div>span{font-size:var(--small-copy);line-height:1.5;color:#aaaab6}
+.contact-secondary{font-size:var(--small-copy);line-height:1.6;gap:16px 24px;letter-spacing:.025em}
+.contact-secondary a,.contact-secondary button{padding-block:6px}
+.contact-actions{flex-wrap:wrap}
+.site-footer,.site-footer p,.footer-time,.site-footer>a:last-child{font-size:var(--label-copy);line-height:1.7;color:#aaa6b4}
+.site-footer{gap:18px 24px}
+.footer-time{flex-wrap:wrap}
+.toast{font-size:var(--small-copy);line-height:1.6}
+.project-detail-columns h3{font-size:var(--label-copy);line-height:1.6}
+.search-trigger kbd,.search-header kbd{font-size:var(--label-copy)}
+.search-header input{font-size:var(--body-copy)}
+.search-caption,.search-footer{font-size:var(--label-copy);line-height:1.6;letter-spacing:.035em}
+.search-footer{flex-wrap:wrap;gap:8px 16px}
+.search-footer,.search-caption{color:#aaa6b4}
+.result-copy{min-width:0}
+.result-copy strong{font-size:var(--body-copy);line-height:1.5}
+.result-copy small{font-size:var(--small-copy);line-height:1.6;color:#aaa6b4;overflow-wrap:anywhere}
+.search-empty{font-size:var(--body-copy)}
+.theme-trigger{font-size:var(--small-copy)}
+.theme-panel{width:336px;max-width:calc(100vw - 32px);max-height:calc(100svh - 110px);overflow-y:auto}
+.theme-panel-heading{flex-wrap:wrap;gap:8px}
+.theme-panel-heading .mono,#theme-current,.theme-swatch,.theme-note{font-size:var(--label-copy);line-height:1.5}
+#theme-current,.theme-note,.theme-swatch{color:#b4afbd}
+.theme-panel>p{font-size:var(--small-copy);line-height:1.6}
+.theme-swatch{letter-spacing:0}
+#theme-options{row-gap:18px;align-items:start}
+.theme-note{letter-spacing:.035em}
+.contact-dialog-heading .eyebrow,.contact-direct .mono,.form-divider,.contact-dialog label .optional,
+.contact-dialog form>small{font-size:var(--label-copy);line-height:1.6}
+.contact-direct .mono,.form-divider,.contact-dialog label .optional,.contact-dialog form>small{color:#aaa6b4;letter-spacing:.025em}
+.contact-dialog label{font-size:var(--small-copy);line-height:1.6}
+.contact-dialog input,.contact-dialog textarea,.contact-dialog select{font-size:var(--body-copy)}
+.contact-dialog select{min-height:48px}
+.contact-availability,#contact-feedback{font-size:var(--small-copy);line-height:1.7}
+.loader-bottom{font-size:var(--label-copy);line-height:1.6;letter-spacing:.06em;gap:20px}
+
+@media(max-width:1100px){
+  .desktop-nav{gap:18px}
+  .contact-bottom{align-items:flex-start;flex-wrap:wrap}
+}
+@media(max-width:800px){
+  .project-image:has(.network-art){aspect-ratio:auto;height:280px}
+  .network-node{width:78px;height:62px}
+  .network-node.core{width:90px;height:80px;left:calc(50% - 45px);top:calc(50% - 40px)}
+  .network-node.node-a,.network-node.node-c{left:2%}
+  .network-node.node-b,.network-node.node-d{right:2%}
+  .network-node.node-a,.network-node.node-b{top:23%}
+  .network-node.node-c,.network-node.node-d{bottom:17%}
+  .network-bottom{left:12px;max-width:calc(100% - 50px)}
+  .plugin-flow span{padding:11px 8px}
+  .expertise-content{gap:28px;padding-right:0}
+}
+@media(max-width:600px){
+  .hero-visual{height:440px}
+  .interaction-hint{display:none}
+  .nav-actions{gap:8px}
+  .nav-contact{font-size:13px;padding:10px;gap:8px}
+  .hero-intro{max-width:none}
+  .hero-actions{gap:18px;align-items:flex-start}
+  .hero-actions .text-link{min-height:44px;align-items:center}
+  .hero-signoff .signoff-divider{display:none}
+  .hero-footer{gap:16px;justify-content:space-between}
+  .hero-footer .hero-summary{order:3;flex-basis:100%}
+  .hero-summary>span{flex-direction:row;align-items:center;gap:10px}
+  .scroll-cue{gap:8px;letter-spacing:.025em}
+  .motion-toggle{font-size:11px;letter-spacing:0;gap:5px}
+  .work-toolbar{display:flex;align-items:flex-start}
+  .filter-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:8px}
+  .filter-list button{font-size:13px;line-height:1.5;padding:10px 8px}
+  .work-toolbar #work-count{margin-top:0}
+  .project-heading{flex-wrap:wrap;gap:6px 12px}
+  .project-tags{gap:6px 10px}
+  .project-type{top:12px;left:12px}
+  .plugin-art{gap:14px}
+  .plugin-art>strong{font-size:23px;text-align:center;padding-inline:12px}
+  .plugin-flow{gap:5px;font-size:11px}
+  .plugin-flow span{padding:11px 7px}
+  .concept-caption{left:12px;max-width:calc(100% - 50px)}
+  .expertise-content{padding-left:0}
+  .contact-actions{gap:12px}
+  .contact-actions .button{padding:14px;gap:12px}
+  .site-footer{gap:16px}
+  .footer-time{margin-left:0}
+  .search-header{gap:12px}
+  .search-footer{font-size:11px;gap:8px 12px}
+  .contact-direct .mono{letter-spacing:0}
+  .contact-dialog-heading{padding-right:26px}
+}

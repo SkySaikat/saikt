@@ -23,6 +23,7 @@ The production build is written to `dist/`. Production preview uses http://127.0
 - `src/data.js`: project entries, project details, categories, expertise, and searchable skills.
 - `index.html`: hero, about, original testimonials, contact, and navigation.
 - `src/style.css` and `src/enhancements.css`: base design, theme-aware colors, entrance animation, and contact layout.
+- `src/readability.css`: readable body and label sizes, text contrast, and responsive wrapping for controls and captions.
 - `src/themes.js`: eight accent colors and local preference persistence.
 - `src/contact.js`: popup form, validation feedback, and delivery states.
 - `server/contact.js` and `vite.config.js`: SMTP delivery endpoint, available in development and preview.
