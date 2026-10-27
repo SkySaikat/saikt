@@ -1,6 +1,6 @@
 # Saikat Chowdhury portfolio
 
-A local portfolio built with Vite, vanilla JavaScript, and Three.js. The portfolio runs without credentials. Direct contact-form delivery uses a server-only Hostinger SMTP connection.
+A one-page portfolio built with Vite, vanilla JavaScript, Three.js, and an Express production server. The portfolio runs without credentials. Direct contact-form delivery uses a server-only Hostinger SMTP connection.
 
 ## Run locally
 
@@ -26,7 +26,10 @@ The production build is written to `dist/`. Production preview uses http://127.0
 - `src/readability.css`: readable body and label sizes, text contrast, and responsive wrapping for controls and captions.
 - `src/themes.js`: eight accent colors and local preference persistence.
 - `src/contact.js`: popup form, validation feedback, and delivery states.
-- `server/contact.js` and `vite.config.js`: SMTP delivery endpoint, available in development and preview.
+- `server.js` and `server/app.js`: production Express server for Hostinger, serving the built site and JSON API.
+- `server/contact.js` and `vite.config.js`: shared SMTP handler for production, development, and preview.
+- `src/contact-api.js`: defensive response parsing and useful delivery errors.
+- `src/additional-projects.js`, `src/faq-data.js`, and `src/content.css`: additional sourced projects, client answers, and their presentation.
 - `src/scene.js`: optional Three.js scene, with visibility and reduced-motion controls.
 - `src/main.js`: filters, command palette, dialogs, live local time, and contact actions.
 - `src/seo-data.js`: public identity, canonical domain, search title, and description.
@@ -69,7 +72,7 @@ SMTP_PASS="your mailbox password"
 
 Restart `npm run dev` after changing SMTP settings. Run `npm run email:verify` to check authentication without sending an email. Use `npm test` for the contact endpoint's isolated tests; those do not send real email.
 
-The form reports unavailable until the password is configured. `npm run preview` also includes the endpoint. A static-only deployment of `dist/` will not include the server handler: production hosting must run a Node/serverless adapter for `server/contact.js` and set the same server-side variables. The in-memory rate limiter is for this single-process local server; use shared limiting when deploying multiple instances.
+The form reports unavailable until the password is configured. Run `npm run build`, then `npm start` for production. `server.js` serves `dist/` and both contact endpoints through one Express process. Deploying only `dist/` as a static Vite site cannot send email. See [HOSTINGER-DEPLOYMENT.md](HOSTINGER-DEPLOYMENT.md) for settings. The in-memory rate limiter is per process; use a shared store when scaling to multiple instances. Configure `TRUST_PROXY_HOPS` only after confirming the proxy topology.
 
 Technical references: [Nodemailer SMTP](https://nodemailer.com/smtp), [Vite plugin server hooks](https://vite.dev/guide/api-plugin.html).
 
@@ -77,9 +80,9 @@ Technical references: [Nodemailer SMTP](https://nodemailer.com/smtp), [Vite plug
 
 The portfolio deliberately remains one page. Project buttons still open dialogs; no service or project pages were added. The sitemap contains only the canonical homepage, `https://saikatchowdhury.com/`, rather than hash sections or popup URLs.
 
-The page includes Person, WebSite, ProfilePage, and four Service entities in JSON-LD. They describe the real profile, location, education, LinkedIn profile, and visible expertise. Canonical, author, robots, Open Graph, and Twitter card metadata use the same identity configuration. No review stars, fabricated ratings, or business-address claims are added.
+The page includes Person, WebSite, ProfilePage, four Service entities, an ItemList, and 23 CreativeWork entities in JSON-LD. They describe the public profile, location, education, social profiles, visible expertise, and project work. Canonical, author, robots, Open Graph, and Twitter card metadata use the same identity configuration. No review stars, fabricated ratings, or business-address claims are added.
 
-All 13 project cards and all expertise rows are included in the initial HTML. The browser enhances those cards with the existing filters, archive, and popups. Without JavaScript, every project stays visible with expandable project notes, and the preloader is hidden. Generated blocks in `index.html` are marked with comments; edit `src/data.js` and `src/seo-data.js`, then run `npm run seo:generate` to refresh them. Vite also refreshes them automatically when starting development, preview, or a production build.
+All 23 project cards, full project notes, six FAQs, and expertise rows are included in the initial HTML. Filters hide cards without removing their content from the document. Project buttons and the Project details control open the existing popups; without JavaScript, notes expand in place. Canonical project fragment links also open the matching popup. Generated blocks in `index.html` are marked with comments; edit the source data, then run `npm run seo:generate`. Vite also refreshes them during development, preview, and production builds.
 
 The server uses Vite's multi-page mode only to return a real 404 for unknown paths instead of serving duplicate copies of the homepage. This does not add pages to the site. A production host should also return 404 for unknown paths and serve the sitemap and robots files from the domain root.
 
@@ -92,3 +95,13 @@ The server uses Vite's multi-page mode only to return a real 404 for unknown pat
 5. Track impressions and clicks for “Saikat Chowdhury” and relevant web-development queries. Keep project evidence, profile details, and descriptions accurate as the portfolio grows.
 
 Guidance: [Google's sitemap instructions](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics), [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data).
+
+## AI search discovery
+
+The visible content explains the person, services, location, actual project scope, and common client questions. Search crawlers including Googlebot, Bingbot, and OAI-SearchBot are allowed by the wildcard robots policy; `/api/` is excluded. A hosting firewall must also allow legitimate crawlers.
+
+The standard sitemap contains only the canonical homepage. There is no separate standard AEO sitemap. `llms.txt` is an optional generated text guide using the same public content; Google does not use it for visibility or rankings. It does not replace HTML or Search Console. FAQs are useful visible answers, without a promise of Google FAQ rich results.
+
+After release, submit the sitemap in Google Search Console and Bing Webmaster Tools, inspect the homepage, and monitor actual impressions, queries, and crawl errors. Rankings and AI citations cannot be guaranteed. If the older Vercel portfolio is retired, redirect its URLs to matching sections or project anchors on the canonical domain. This repository does not control that other deployment.
+
+References: [Google AI-search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [OpenAI search crawler guidance](https://developers.openai.com/api/docs/bots).

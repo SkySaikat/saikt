@@ -1,0 +1,18 @@
+.project-card[hidden]{display:none}
+.project-notes{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:16px;line-height:1.75}
+.project-notes summary{color:var(--accent);font-size:14px;cursor:pointer;display:flex;justify-content:space-between;gap:16px;list-style:none}
+.project-notes summary::-webkit-details-marker{display:none}
+.project-notes p,.project-notes ul{margin-top:16px}
+.project-notes ul{padding-left:20px}
+.project-notes h4{margin-top:20px;color:var(--text)}
+.project-notes a{display:inline-block;margin:16px 20px 0 0;color:var(--accent)}
+.faq-section{border-top:1px solid var(--line)}
+.faq-list{max-width:920px;margin-left:auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{display:flex;justify-content:space-between;gap:24px;cursor:pointer;list-style:none;padding:26px 0;font-size:18px;font-weight:600;line-height:1.5}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary span{color:var(--accent);font-size:24px;flex-shrink:0;font-weight:400}
+.faq-item[open] summary span{transform:rotate(45deg)}
+.faq-item p{max-width:780px;font-size:17px;line-height:1.8;color:var(--muted);padding:0 48px 28px 0;margin:0}
+.detail-action{display:flex;align-items:center;flex-wrap:wrap;gap:24px}
+@media(max-width:600px){.faq-item summary{font-size:17px;gap:20px;padding:22px 0}.faq-item p{font-size:16px;padding-right:0}.plugin-art strong{max-width:88%;font-size:clamp(20px,6vw,30px);line-height:1.25}.plugin-flow{max-width:92%;flex-wrap:wrap;justify-content:center;row-gap:10px}.project-heading h3{overflow-wrap:anywhere}}

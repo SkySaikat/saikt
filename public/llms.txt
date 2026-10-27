@@ -1,0 +1,75 @@
+# Saikat Chowdhury
+
+> Saikat Chowdhury is a full-stack web developer and AI architect in Chattogram, Bangladesh. Explore websites, WordPress plugins, automation and custom MCP servers.
+
+Canonical portfolio: https://saikatchowdhury.com/
+Contact: hi@saikatchowdhury.com
+Location: Chattogram (Chittagong), Bangladesh; GMT+6.
+
+## Services
+
+- AI engineering & connected systems: Connecting language models to real tools, useful knowledge, and practical workflows. Built with the infrastructure and cost awareness to keep them useful.
+- Full-stack web & product development: I build responsive websites and web applications with React, Next.js, Node.js, PHP, and Laravel, connecting the frontend, backend, and content into one experience.
+- WordPress plugins & e-commerce development: Custom WordPress plugins, WooCommerce functionality, and storefronts that fit the way your business works. Projects range from abstract review and metadata cleanup to multi-site publishing, with custom post types, WordPress hooks, and REST API integrations.
+- Automation, technical SEO & marketing technology: I connect websites, call tracking, and CRM tools using n8n, Zapier, and APIs. My technical SEO work covers URL mapping, content migrations, metadata, structured data, and service-area templates, with lead forms and CRM handoffs checked as part of delivery.
+- Cloud, infrastructure & delivery: The foundations that keep a good product running. Database architecture, deployment workflows, caching, and production troubleshooting.
+- Design, mobile & experimentation: Exploring beyond the browser, from interface design and mobile experiences to small connected devices and prototypes.
+
+## Projects
+
+- [Google Ads MCP](https://saikatchowdhury.com/#project-google-ads): An authenticated MCP service that connects AI assistants to Google Ads and a master Google Sheet. Teams can explore campaign performance, query account data, and preview changes before applying them, without jumping between tools.
+- [DocoClock](https://saikatchowdhury.com/#project-dococlock): A healthcare platform for Bangladesh bringing doctor discovery, appointments, live serial queues, and digital prescriptions into one experience. React and Supabase power six role-specific interfaces, while Capacitor extends the shared codebase to Android.
+- [CallRail MCP](https://saikatchowdhury.com/#project-callrail): A custom MCP server connecting AI assistants to CallRail. It brings calls, form submissions, attribution, and lead operations into a conversational workflow, with OAuth support and multiple connection transports.
+- [ITZ Digital](https://saikatchowdhury.com/#project-itz-digital): A rebuild of ITZ Digital’s WordPress and Elementor website using Next.js. The project brings the agency’s services, industry pages, and existing content into a responsive architecture: 646 routes, including 595 migrated blog posts, with static pages and a server-side contact endpoint.
+- [J.R. Watkins](https://saikatchowdhury.com/#project-jr-watkins): A website development project featured in my existing portfolio. The work focused on a modern, user-friendly experience, with attention to responsive presentation and search visibility.
+- [Conference review, reimagined](https://saikatchowdhury.com/#project-conference-plugin): A bespoke abstract submission and weighted-review plugin for the 3rd Cyprus Speech Therapy Conference. It supports a structured academic review process with custom post types, reviewer stages, and weighted scoring rubrics.
+- [Workiz](https://saikatchowdhury.com/#project-workiz): Website development work from my existing portfolio for Workiz, a platform serving field-service businesses.
+- [Windsor](https://saikatchowdhury.com/#project-windsor): A web design project featured in my existing portfolio, centered on the Windsor shopping experience and its brand presentation.
+- [Crafted Look](https://saikatchowdhury.com/#project-crafted-look): A blog website from my existing portfolio, designed to give editorial content a clear, approachable home.
+- [The Unseen Threads](https://saikatchowdhury.com/#project-unseen-threads): A blog and website project featured in my existing portfolio.
+- [Read The Anime](https://saikatchowdhury.com/#project-read-the-anime): A blog website project from my existing portfolio, built around an anime-focused content experience.
+- [ezeie](https://saikatchowdhury.com/#project-ezeie): A UX and web application project from my existing portfolio. The redesign focused on a website experience that works across screen sizes.
+- [California Olive Ranch](https://saikatchowdhury.com/#project-california-olive): Website development work featured in my existing portfolio for California Olive Ranch.
+- [Allsafe Electric](https://saikatchowdhury.com/#project-allsafe-electric): A static-first Next.js website for Allsafe Electric in Parker, Colorado. The migration brings service and location content together with call tracking, quote forms, and automated CRM handoffs. Existing URL mappings are part of the migration plan.
+- [Clear Day Baths](https://saikatchowdhury.com/#project-clear-day-baths): A static-first website for a bathroom remodeling business serving Northern Virginia and Maryland. The project combines a WordPress migration, service-area content, call tracking, and quote forms that pass inquiries into the CRM.
+- [Multi-site AI Blog Engine](https://saikatchowdhury.com/#project-ai-blog-engine): An automated content pipeline connecting n8n, Google Gemini, and a custom WordPress plugin. The workflow generates content and sends it to multiple sites through the WordPress REST API, with publishing and scheduling handled by the plugin.
+- [SEO Duplicate Fixer](https://saikatchowdhury.com/#project-seo-duplicate-fixer): A custom WordPress plugin for cleaning up duplicate meta descriptions left by retired page builders and repeated brand names in Yoast SEO titles. It provides a dry run and batched processing for larger sites.
+- [AI Campus Navigator](https://saikatchowdhury.com/#project-ai-campus-navigator): A graph-search chatbot for the CSE department at Premier University. Keyword rules identify a question’s intent, then BFS, DFS, Greedy Best-First, or A* searches a knowledge graph of courses, teachers, topics, and schedules. Each answer shows how it was found.
+- [Local News Chittagong](https://saikatchowdhury.com/#project-local-news-chittagong): A map-oriented Android community app built with Kotlin and Jetpack Compose. It uses Clean Architecture, MVVM, StateFlow, and Hilt, with Firebase authentication and Firestore profiles. Geohash proximity queries are planned work, not a shipped feature.
+- [Smart IoT Monitor](https://saikatchowdhury.com/#project-iot-environment-monitor): An environmental monitoring prototype built with an ESP8266 NodeMCU. It reads environmental sensors, switches relays automatically, and exposes real-time telemetry for remote monitoring.
+- [Pet-cy](https://saikatchowdhury.com/#project-pet-cy): An e-commerce storefront for a Cyprus pet supply business. The website brings the product catalog, special offers, gift cards, and partnerships into one shopping experience.
+- [Zplaza Marketplace](https://saikatchowdhury.com/#project-zplaza): A buyer-centric marketplace included in my e-commerce and web-platform portfolio. The project focuses on organizing a marketplace experience around the needs of buyers.
+- [The Daily Grind](https://saikatchowdhury.com/#project-daily-grind): An interactive web application included in my wider web-platform portfolio. It represents the interactive product side of my work alongside websites, storefronts, and custom tools.
+
+## Questions and answers
+
+### What does Saikat Chowdhury build?
+
+I build websites and web applications with Next.js, React, Node.js, PHP, and Laravel, along with custom WordPress plugins, e-commerce experiences, AI automation, and Model Context Protocol (MCP) servers. My work connects the interface, business workflow, and underlying systems.
+
+### Where are you based, and do you work internationally?
+
+I am based in Chattogram (Chittagong), Bangladesh, in the GMT+6 time zone. I work remotely with clients and teams across Europe, North America, and Asia. I am also the founder of Wonder Web Studio and a web team lead.
+
+### Can you build a custom WordPress plugin?
+
+Yes. I build plugins for workflows that need more than an off-the-shelf tool. Examples include the Cyprus conference abstract submission and weighted-review plugin, a multi-site publishing integration, and SEO Duplicate Fixer for cleaning up WordPress metadata.
+
+### What can a custom MCP server do for my business?
+
+An MCP server connects a compatible AI assistant to your business tools through a defined set of actions. My Google Ads MCP supports reporting and preview-and-confirm campaign changes, while CallRail MCP connects calls, forms, attribution, and lead operations. The useful starting point is a specific workflow and clear access rules.
+
+### Can you migrate a WordPress website to Next.js?
+
+Yes. My migration work includes ITZ Digital and home-service websites. I map existing URLs, migrate content, and check redirects, metadata, structured data, and lead forms. That helps preserve useful content and discoverability, but no migration can guarantee unchanged search rankings.
+
+### How do we start a web development or automation project?
+
+Send a brief through the contact form or email hi@saikatchowdhury.com. Include what you want to build, your current website or tools, the problem you want to solve, and any target timeline or budget. I can then discuss the scope and a practical next step.
+
+## Links
+
+- [Sitemap](https://saikatchowdhury.com/sitemap.xml)
+- [CV](https://saikatchowdhury.com/downloads/saikat-chowdhury-cv.pdf)
+- [LinkedIn](https://www.linkedin.com/in/saikat-chowdhury-2a38201b6/)
+- [GitHub](https://github.com/SkySaikat)

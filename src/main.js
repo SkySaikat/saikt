@@ -5,10 +5,11 @@ import '@fontsource/ibm-plex-mono/400.css';
 import './style.css';
 import './enhancements.css';
 import './readability.css';
+import './content.css';
 import {projects, expertise} from './data.js';
 import {initThemes} from './themes.js';
 import {initContact} from './contact.js';
-import {projectVisual, renderProjectCard, renderExpertise} from './project-renderer.js';
+import {projectVisual, renderExpertise} from './project-renderer.js';
 
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
@@ -22,16 +23,19 @@ let filter='all',expanded=false;
 function renderProjects(){
   const list=projects.filter(p=>filter==='all'||p.category.includes(filter));
   const visible=expanded||filter!=='all'?list:list.slice(0,6);
-  $('#projects').innerHTML=visible.map((p,i)=>renderProjectCard(p,i,projects)).join('');
+  const visibleIds=new Set(visible.map(p=>p.id));
+  $$('.project-card').forEach(card=>{card.hidden=!visibleIds.has(card.id.replace('project-',''))});
   $('#work-count').textContent=`SHOWING ${String(visible.length).padStart(2,'0')} OF ${String(list.length).padStart(2,'0')}`;
   $('[data-filter="all"] span').textContent=projects.length;
   $('#show-more').hidden=filter!=='all';
   $('#show-more').innerHTML=expanded?'Show selected work <span>↑</span>':'More from the archive <span>↓</span>';
-  $$('.project-card-button').forEach(button=>button.addEventListener('click',()=>openProject(button.dataset.project)));
+
 }
 $$('[data-filter]').forEach(button=>button.addEventListener('click',()=>{filter=button.dataset.filter;$$('[data-filter]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button))});renderProjects()}));
 $('#show-more').addEventListener('click',()=>{expanded=!expanded;renderProjects();if(!expanded)$('#work').scrollIntoView({behavior:motionPaused?'instant':'smooth'})});
 renderProjects();
+$$('.project-card-button').forEach(button=>button.addEventListener('click',()=>openProject(button.dataset.project)));
+$$('[data-project-notes]').forEach(summary=>summary.addEventListener('click',event=>{event.preventDefault();openProject(summary.dataset.projectNotes)}));
 
 $('#expertise-list').innerHTML=renderExpertise(expertise);
 
@@ -41,9 +45,20 @@ function closeDialog(dialog){dialog.close()}
 $$('dialog').forEach(dialog=>{ $('.dialog-close',dialog).addEventListener('click',()=>closeDialog(dialog));dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeDialog(dialog)}});dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');lastFocus?.focus({preventScroll:true})})});
 function openProject(id){
   const p=projects.find(item=>item.id===id);if(!p)return;
-  $('#project-detail').innerHTML=`<div class="project-detail-visual">${projectVisual(p)}</div><div class="project-detail-body"><p class="project-detail-label">${p.label}</p><h2 id="project-dialog-title">${p.title}</h2><p>${p.description}</p><div class="skill-chips">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-detail-columns"><div><h3>The work</h3><ul>${p.features.map(t=>`<li>${t}</li>`).join('')}</ul></div><div><h3>The building blocks</h3><ul>${p.architecture.map(t=>`<li>${t}</li>`).join('')}</ul></div></div><div class="detail-action">${p.url?`<a class="button button-primary" href="${p.url}" target="_blank" rel="noopener noreferrer">Visit live website <span>↗</span></a>`:`<a class="button button-outline" href="mailto:hi@saikatchowdhury.com?subject=${encodeURIComponent(`Tell me about ${p.title}`)}">Let’s talk about this project <span>↗</span></a>`}</div></div>`;
+  $('#project-detail').innerHTML=`<div class="project-detail-visual">${projectVisual(p,'detail-')}</div><div class="project-detail-body"><p class="project-detail-label">${p.label}</p><h2 id="project-dialog-title">${p.title}</h2><p>${p.description}</p><div class="skill-chips">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="project-detail-columns"><div><h3>The work</h3><ul>${p.features.map(t=>`<li>${t}</li>`).join('')}</ul></div><div><h3>The building blocks</h3><ul>${p.architecture.map(t=>`<li>${t}</li>`).join('')}</ul></div></div><div class="detail-action">${p.url?`<a class="button button-primary" href="${p.url}" target="_blank" rel="noopener noreferrer">Visit live website <span>↗</span></a>`:`<a class="button button-outline" href="mailto:hi@saikatchowdhury.com?subject=${encodeURIComponent(`Tell me about ${p.title}`)}">Let’s talk about this project <span>↗</span></a>`}${p.repo?`<a class="text-link" href="${p.repo}" target="_blank" rel="noopener noreferrer">View source on GitHub ↗</a>`:''}</div></div>`;
   $('#project-dialog').setAttribute('aria-labelledby','project-dialog-title');openDialog($('#project-dialog'));
 }
+
+
+function openProjectAnchor(){
+  const id=location.hash.replace('#project-','');
+  if(location.hash.startsWith('#project-')&&projects.some(p=>p.id===id)){
+    if($('#project-dialog').open)$('#project-dialog').close();
+    openProject(id);
+  }
+}
+window.addEventListener('hashchange',openProjectAnchor);
+openProjectAnchor();
 
 // A local command palette. No model calls, API keys, or personal data leave this page.
 const commands=[...projects.map(p=>({title:p.title,detail:p.tags.join(' · '),icon:p.category.includes('ai')?'⌘':'↗',keywords:[p.subtitle,p.description,...p.category].join(' '),run:()=>openProject(p.id)})),...expertise.map((e,i)=>({title:e.title,detail:e.skills.join(' · '),keywords:e.skills.join(' '),icon:'✳',run:()=>{const row=$$('.expertise-row')[i];row.open=true;row.scrollIntoView({behavior:motionPaused?'instant':'smooth',block:'center'});$('summary',row).focus({preventScroll:true})}})),{title:'Start a conversation',detail:'hi@saikatchowdhury.com',keywords:'email contact hire availability',icon:'↗',run:()=>$('#contact').scrollIntoView({behavior:motionPaused?'instant':'smooth'})},{title:'About Saikat',detail:'Developer, team lead, and founder',keywords:'about founder experience wonder web studio',icon:'+',run:()=>$('#about').scrollIntoView({behavior:motionPaused?'instant':'smooth'})}];

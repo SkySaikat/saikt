@@ -1,3 +1,5 @@
+import {readContactResponse,submitInquiry} from './contact-api.js';
+
 export function initContact(openDialog){
   const dialog=document.querySelector('#contact-dialog');
   const form=document.querySelector('#contact-form');
@@ -9,7 +11,7 @@ export function initContact(openDialog){
 
   function showFeedback(message,isError=false){feedback.textContent=message;feedback.classList.toggle('is-error',isError);feedback.hidden=!message}
   async function checkAvailability(){
-    try{const response=await fetch('/api/contact/status',{cache:'no-store'});const data=await response.json();availability.hidden=response.ok&&data.available===true;}
+    try{const response=await fetch('/api/contact/status',{cache:'no-store',signal:AbortSignal.timeout(8000)});const data=await readContactResponse(response);availability.hidden=response.ok&&data.available===true;}
     catch{availability.hidden=false}
   }
   function open(){openDialog(dialog);checkAvailability()}
@@ -20,9 +22,7 @@ export function initContact(openDialog){
     pending=true;submit.disabled=true;form.setAttribute('aria-busy','true');submit.innerHTML='Sending your message <span class="sending-spinner" aria-hidden="true"></span>';showFeedback('');
     try{
       const values=Object.fromEntries(new FormData(form));
-      const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(values),signal:AbortSignal.timeout(35000)});
-      const data=await response.json();
-      if(!response.ok||data.ok!==true)throw new Error(data.error||'Your message could not be sent. Please try again or email me directly.');
+      await submitInquiry(values);
       form.hidden=true;availability.hidden=true;success.hidden=false;success.focus();form.reset();
     }catch(error){showFeedback(error.name==='TimeoutError'?'Delivery is taking longer than expected. Please wait before trying again, or email me directly.':error.message||'Something went wrong. Your message is still here. Please try again.',true)}
     finally{pending=false;submit.disabled=false;form.removeAttribute('aria-busy');submit.innerHTML='Send message <span>↗</span>'}

@@ -9,17 +9,23 @@
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "test": "node --test",
     "seo:generate": "node scripts/generate-seo.js",
-    "email:verify": "node scripts/verify-email.js"
+    "email:verify": "node scripts/verify-email.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource-variable/space-grotesk": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
+    "express": "^5.3.0",
     "nodemailer": "^10.2.1",
     "three": "0.186.1"
   },
   "devDependencies": {
     "vite": "8.3.5"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.14.0"
   }
 }

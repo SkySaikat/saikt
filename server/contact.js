@@ -64,8 +64,8 @@ async function readJson(req){
   catch{throw new Error('Please submit a valid contact form.')}
 }
 
-// SMTP details never enter the browser. This handler works in dev and preview.
-export function createContactMiddleware({env={},sender=createSmtpSender(env),now=Date.now}={}){
+// SMTP details never enter the browser. Shared by production, dev, and preview.
+export function createContactMiddleware({env={},sender=createSmtpSender(env),now=Date.now,getClientIp=req=>req.socket.remoteAddress}={}){
   const attempts=new Map();
   return async function contact(req,res,next){
     const path=req.url?.split('?')[0];
@@ -75,7 +75,7 @@ export function createContactMiddleware({env={},sender=createSmtpSender(env),now
     // Same-origin JSON only. Do not trust arbitrary forwarding headers for identity.
     const origin=req.headers.origin;
     if(origin){
-      try{const url=new URL(origin);if(!['http:','https:'].includes(url.protocol)||url.host!==req.headers.host)throw new Error()}
+      try{const url=new URL(origin);const expected=env.SITE_ORIGIN?new URL(env.SITE_ORIGIN).origin:null;if(!['http:','https:'].includes(url.protocol)||(expected?url.origin!==expected:url.host!==req.headers.host))throw new Error()}
       catch{json(res,403,{error:'Please send your message from this website.'});return}
     }
     if(req.headers['sec-fetch-site']==='cross-site'){json(res,403,{error:'Please send your message from this website.'});return}
@@ -84,7 +84,7 @@ export function createContactMiddleware({env={},sender=createSmtpSender(env),now
     if(!sender){json(res,503,{error:'The form is temporarily unavailable. Please email hi@saikatchowdhury.com directly. Your message has not been sent.'});return}
     const time=now();
     for(const [key,entry] of attempts)if(entry.until<=time)attempts.delete(key);
-    const ip=req.socket.remoteAddress||'unknown';const entry=attempts.get(ip)||{count:0,until:time+15*60*1000};
+    const ip=getClientIp(req)||'unknown';const entry=attempts.get(ip)||{count:0,until:time+15*60*1000};
     if(entry.count>=5){json(res,429,{error:'Please wait a little before sending another message, or email me directly.'},{'Retry-After':String(Math.ceil((entry.until-time)/1000))});return}
     entry.count++;attempts.set(ip,entry);
     let data;
